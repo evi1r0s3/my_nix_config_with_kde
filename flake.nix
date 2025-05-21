@@ -15,6 +15,9 @@
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+    nur = {
+      url = "github:nix-community/NUR";
+    };
 
     # binary-ninja.url = "github:jchv/nix-binary-ninja";
 
@@ -24,7 +27,7 @@
     firefox-addons.inputs.nixpkgs.follows = "nixpkgs-stable";
   };
 
-  outputs = inputs@{ self, nixpkgs-stable, nixpkgs-unstable, home-manager, ... }: 
+  outputs = inputs@{ self, nixpkgs-stable, nixpkgs-unstable, home-manager, nur, ... }: 
   let
     systemSettings = {
       system = "x86_64-linux";
@@ -41,7 +44,8 @@
       config.permittedInsecurePackages = [ "openssl-1.1.1w" ];
     };
     pkgs-default = pkgs-stable;
-  in {
+    pkgs-nur = import nur { pkgs = pkgs-unstable; nurpkgs = pkgs-unstable; };
+    in {
       nixosConfigurations = {
         ZenNix0s = lib.nixosSystem rec {
           # 架构
@@ -51,8 +55,7 @@
             inherit pkgs-default;
             inherit pkgs-stable;
             inherit pkgs-unstable;
-            inherit inputs;
-            inherit system;
+            inherit pkgs-nur;
 	      };
           # 模块
 	      modules = [
@@ -65,8 +68,8 @@
               inherit pkgs-default;
               inherit pkgs-stable;
               inherit pkgs-unstable;
-              inherit inputs;
-              inherit system;
+              inherit pkgs-nur;
+	      inherit inputs;
               };
 	        }
             ./modules/plasma.nix
@@ -98,8 +101,11 @@
             ./modules/gdb.nix
             #./modules/pipewire.nix
             ./modules/wechat-uos.nix
+            ./modules/nur_basic_tools.nix
             #./modules/obsidian.nix
             ./modules/sing-box.nix
+            ./modules/kitty.nix
+            ./modules/zellij.nix
             #./modules/flatpak.nix
             #./modules/onlyoffice.nix
             #./modules/wpsoffice-cn.nix

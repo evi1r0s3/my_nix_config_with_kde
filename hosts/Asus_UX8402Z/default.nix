@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs-default , ... }:
 
 {
   imports =
@@ -25,6 +25,10 @@
         enableCryptodisk = false;
         useOSProber = false;
         efiInstallAsRemovable = true;
+        #gfxmodeEfi = "1920x1200";
+        #gfxmodeBios = "1920x1200";
+        font = "${pkgs-default.nerdfonts}/share/fonts/truetype/NerdFonts/IntoneMonoNerdFont-Medium.ttf";
+        fontSize = 24;
       };
     };
     supportedFilesystems = [ 

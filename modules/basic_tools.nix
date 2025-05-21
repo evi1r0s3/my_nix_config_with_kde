@@ -26,7 +26,6 @@
     zed-editor
     vscode
     vim
-    flameshot
   ];
 }
 
