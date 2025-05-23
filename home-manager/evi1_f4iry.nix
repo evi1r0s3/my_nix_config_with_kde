@@ -1,23 +1,16 @@
 { ... }:
 {
   imports = [
-    #./hyprland
-    #./gui
-    #./kitty
-    #./eww
-    #./ranger
+    ./kitty
     ./Pictures
-    #./swaylock
-    #./fcitx5
-    #./cursor
-    #./helix
-    #./emacs
-    #./neovim
+    ./fcitx5
+    ./helix
     ./direnv
-    #./foot
     ./shell
     ./virt_manager
     ./firefox
+    ./kitty
+    ./zellij
   ];
 
   home.username = "evi1_f4iry";

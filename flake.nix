@@ -72,8 +72,8 @@
 	      inherit inputs;
               };
 	        }
+            ./modules/zen_kernel.nix
             ./modules/plasma.nix
-            #./modules/zen_kernel.nix
             ./modules/basic_tools.nix
             ./modules/security.nix
             ./modules/garbage_collect.nix
@@ -102,10 +102,8 @@
             #./modules/pipewire.nix
             ./modules/wechat-uos.nix
             ./modules/nur_basic_tools.nix
-            #./modules/obsidian.nix
+            ./modules/obsidian.nix
             ./modules/sing-box.nix
-            ./modules/kitty.nix
-            ./modules/zellij.nix
             #./modules/flatpak.nix
             #./modules/onlyoffice.nix
             #./modules/wpsoffice-cn.nix

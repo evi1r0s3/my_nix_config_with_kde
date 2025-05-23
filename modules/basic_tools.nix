@@ -26,6 +26,8 @@
     zed-editor
     vscode
     vim
+    kitty
+    zellij
   ];
 }
 
