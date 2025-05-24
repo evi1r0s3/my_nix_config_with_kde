@@ -47,7 +47,7 @@
     pkgs-nur = import nur { pkgs = pkgs-unstable; nurpkgs = pkgs-unstable; };
     in {
       nixosConfigurations = {
-        ZenNix0s = lib.nixosSystem rec {
+        ZenNix0s = lib.nixosSystem {
           # 架构
           system = systemSettings.system;
           # 参数传递
@@ -69,10 +69,11 @@
               inherit pkgs-stable;
               inherit pkgs-unstable;
               inherit pkgs-nur;
-	      inherit inputs;
+	            inherit inputs;
               };
 	        }
-            ./modules/zen_kernel.nix
+            ./unfree.nix
+            #./modules/zen_kernel.nix
             ./modules/plasma.nix
             ./modules/basic_tools.nix
             ./modules/security.nix
