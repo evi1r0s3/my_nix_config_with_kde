@@ -1,4 +1,4 @@
-{ pkgs-default, pkgs-nur, ... }:
+{ pkgs-default, pkgs-nur, inputs,... }:
 {
   fonts = {
     packages = [
@@ -20,6 +20,7 @@
       # emojione #
       # wps fonts #
       pkgs-nur.repos.rewine.ttf-wps-fonts
+      inputs.wpsFonts.packages.${pkgs-default.system}.default
     ];
     fontDir.enable = true;
     fontconfig = {

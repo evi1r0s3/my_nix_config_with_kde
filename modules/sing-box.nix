@@ -1,4 +1,4 @@
-{ pkgs-unstable, pkgs-stable,... }:
+{ pkgs-unstable, pkgs-default,... }:
 {
   environment.systemPackages = with pkgs-unstable; [
     sing-box
@@ -28,9 +28,9 @@
       Type = "oneshot";
       User = "root";
       #Requires = [ "docker.service" "docker.socket"];
-      ExecStartPre = ''${pkgs-stable.systemd}/bin/systemctl stop singbox.service'';
+      ExecStartPre = ''${pkgs-default.systemd}/bin/systemctl stop singbox.service'';
       ExecStart = ''
-        ${pkgs-stable.docker}/bin/docker run \
+        ${pkgs-default.docker}/bin/docker run \
         --rm \
         -v /home/evi1_f4iry/sing_box:/etc/serenity \
         --name=serenity \
@@ -40,7 +40,7 @@
       '';
       StandardOutput = "file:/home/evi1_f4iry/sing_box/my_private.json";
       StandardError = "append:/home/evi1_f4iry/sing_box/serenity_err.json";
-      ExecStartPost = ''${pkgs-stable.bash}/bin/bash /home/evi1_f4iry/sing_box/mk_config.sh'';
+      ExecStartPost = ''${pkgs-default.bash}/bin/bash /home/evi1_f4iry/sing_box/mk_config.sh'';
     };
   };
   # 定时更新

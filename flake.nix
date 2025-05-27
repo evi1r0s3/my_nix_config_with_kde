@@ -25,6 +25,7 @@
     # 浏览https://gitlab.com/rycee/nur-expressions/-/blob/master/pkgs/firefox-addons/addons.json，查找插件名称。
     firefox-addons.url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
     firefox-addons.inputs.nixpkgs.follows = "nixpkgs-stable";
+    wpsFonts.url = "github:hypercrusher/wpsfonts";
   };
 
   outputs = inputs@{ self, nixpkgs-stable, nixpkgs-unstable, home-manager, nur, ... }: 
@@ -36,11 +37,13 @@
     pkgs-stable = import nixpkgs-stable {
       system = systemSettings.system;
       config.allowUnfree = true;
+      config.joypixels.acceptLicense = true;
       config.permittedInsecurePackages = [ "openssl-1.1.1w" ];
     };
     pkgs-unstable = import nixpkgs-unstable {
       system = systemSettings.system;
       config.allowUnfree = true;
+      config.joypixels.acceptLicense = true;
       config.permittedInsecurePackages = [ "openssl-1.1.1w" ];
     };
     pkgs-default = pkgs-stable;
@@ -56,6 +59,7 @@
             inherit pkgs-stable;
             inherit pkgs-unstable;
             inherit pkgs-nur;
+            inherit inputs;
 	      };
           # 模块
 	      modules = [
