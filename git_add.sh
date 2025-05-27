@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-sudo chown evi1_f4iry:users .git &&
+sudo chown -R evi1_f4iry:users .git &&
 git add .
