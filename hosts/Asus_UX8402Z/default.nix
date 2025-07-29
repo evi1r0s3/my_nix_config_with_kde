@@ -27,7 +27,7 @@
         efiInstallAsRemovable = true;
         #gfxmodeEfi = "1920x1200";
         #gfxmodeBios = "1920x1200";
-        font = "${pkgs-default.nerdfonts}/share/fonts/truetype/NerdFonts/IntoneMonoNerdFont-Medium.ttf";
+        font = "${pkgs-default.nerd-fonts.intone-mono}/share/fonts/truetype/NerdFonts/IntoneMonoNerdFont-Medium.ttf";
         fontSize = 24;
       };
     };

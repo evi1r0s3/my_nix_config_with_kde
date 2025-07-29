@@ -10,7 +10,7 @@
         userChrome = (builtins.readFile ./userChrome.css);
         search = {
           force = true;
-          default = "DuckDuckGo";
+          default = "ddg";
         };
         settings = {
           # 使用自定义css

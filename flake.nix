@@ -5,14 +5,14 @@
     # 默认分支设置是unstable
     nixpkgs-unstable.url = "github:Nixos/nixpkgs/nixos-unstable";
     # 然后将stable的分支设置为一个参数，用来回退个别软件包版本为使用stable版
-    nixpkgs-stable.url = "github:Nixos/nixpkgs/nixos-24.11";
+    nixpkgs-stable.url = "github:Nixos/nixpkgs/nixos-25.05";
     
     # homemanager 使用unstable,这样保证在配置一些软件时和pkgs用的分支一致
     home-manager = {
       # unstable
       # url = "github:nix-community/home-manager";
       # stable
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     nur = {
@@ -77,41 +77,31 @@
               };
 	        }
             ./unfree.nix
-            #./modules/zen_kernel.nix
             ./modules/plasma.nix
             ./modules/basic_tools.nix
             ./modules/security.nix
             ./modules/garbage_collect.nix
-            #./modules/tuigreet_hyprland.nix
-            #./modules/hyprland.nix
-            # ./modules/v2raya.nix
             ./modules/fcitx5.nix
-            # ./modules/ranger.nix
             ./modules/fonts.nix
-            #./modules/eww.nix
-            #./modules/swaylock_effects.nix
             ./modules/zsh.nix
-            #./modules/emacs.nix
             ./modules/virt_manager.nix
             ./modules/offsec_tools.nix
-            #./modules/vscode.nix
             ./modules/wireshark.nix
-            #./modules/thunar.nix
             ./modules/flipper_zero.nix
             ./modules/offsec_SDR.nix
             ./modules/udev_rules.nix
-            #./modules/android.nix
+            ./modules/android.nix
             ./modules/docker.nix
             ./modules/telegram.nix
             ./modules/gdb.nix
-            #./modules/pipewire.nix
             ./modules/wechat-uos.nix
             ./modules/nur_basic_tools.nix
+            ./modules/wps.nix
             ./modules/obsidian.nix
             ./modules/sing-box.nix
-            #./modules/flatpak.nix
-            #./modules/onlyoffice.nix
-            #./modules/wpsoffice-cn.nix
+            ./modules/v2raya.nix
+            ./modules/zen_kernel.nix
+#            ./modules/remnote.nix
         ];
       };
     };

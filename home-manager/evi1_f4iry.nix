@@ -11,6 +11,7 @@
     ./firefox
     ./kitty
     ./zellij
+    ./wps
   ];
 
   home.username = "evi1_f4iry";

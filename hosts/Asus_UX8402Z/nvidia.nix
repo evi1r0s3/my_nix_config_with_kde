@@ -20,7 +20,7 @@
       # Enable this if you have graphical corruption issues or application crashes after waking
       # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead 
       # of just the bare essentials.
-      powerManagement.enable = false;
+      powerManagement.enable = true;
 
       # Fine-grained power management. Turns off GPU when not in use.
       # Experimental and only works on modern Nvidia GPUs (Turing or newer).
@@ -53,6 +53,7 @@
     # PRIME 同步还可以解决将翻盖模式下的显示器直接连接到 GPU 的一些问题。
     prime = {
       sync.enable = true;
+      allowExternalGpu = false;
       # Make sure to use the correct Bus ID values for your system!
       # lspci
       nvidiaBusId = "PCI:01:0:0";
@@ -62,6 +63,7 @@
 
   # intel 这个试过如果启用的话是会无法正常进入图形界面 
   # boot.kernelParams = [ "module_blacklist=i915" ];
-  # boot.kernelParams = [ "nvidia_drm.fbdev=1" "nvidia-drm.modeset=1" "module_blacklist=i915" ];
+  #  boot.kernelParams = [ "nvidia_drm.fbdev=1" "nvidia-drm.modeset=1" "module_blacklist=i915" ];
+    boot.kernelParams = [ "nvidia_drm.fbdev=1" "nvidia-drm.modeset=1" ];
   };
 }

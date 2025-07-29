@@ -13,6 +13,7 @@
       User = "root";
       Restart = "always";
       RestartSec = 5;
+      StandardOutput = "file:/home/evi1_f4iry/sing_box/singbox_err.log";
       ExecStart = ''${pkgs-unstable.sing-box}/bin/sing-box run -c \
        /home/evi1_f4iry/sing_box/my_private.json'';
     };
@@ -28,7 +29,7 @@
       Type = "oneshot";
       User = "root";
       #Requires = [ "docker.service" "docker.socket"];
-      ExecStartPre = ''${pkgs-default.systemd}/bin/systemctl stop singbox.service'';
+      ExecStartPre = ''${pkgs-default.coreutils-full}/bin/rm /home/evi1_f4iry/sing_box/my_private_new.json'';
       ExecStart = ''
         ${pkgs-default.docker}/bin/docker run \
         --rm \
@@ -38,8 +39,8 @@
         -D /etc/serenity \
         export private -c my_serenity.json
       '';
-      StandardOutput = "file:/home/evi1_f4iry/sing_box/my_private.json";
-      StandardError = "append:/home/evi1_f4iry/sing_box/serenity_err.json";
+      StandardOutput = "file:/home/evi1_f4iry/sing_box/my_private_new.json";
+      StandardError = "append:/home/evi1_f4iry/sing_box/serenity_err.log";
       ExecStartPost = ''${pkgs-default.bash}/bin/bash /home/evi1_f4iry/sing_box/mk_config.sh'';
     };
   };

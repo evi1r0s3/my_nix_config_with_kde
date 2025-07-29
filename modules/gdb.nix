@@ -2,6 +2,6 @@
 {
   environment.systemPackages = with pkgs-default; [ 
     gdb
-    pwndbg
+    #pwndbg
   ];
 }

@@ -1,8 +1,8 @@
-{ pkgs-default, ... }:
+{ pkgs-default, config, ... }:
 
 {
   # Linux Kernel
-  boot.kernelPackages = pkgs-default.linuxKernel.packages.linux_zen;
+ # boot.kernelPackages = pkgs-default.linuxKernel.packages.linux_zen;
   boot.kernelParams = [ 
     "quiet"
     "fbcon=nodefer"
@@ -15,9 +15,9 @@
     "acpi_rev_override=5"
     #"security=selinux"
   ];
-  #boot.extraModulePackages = with config.boot.kernelPackages; [
-  #  rtl88xxau-aircrack
-  #];
+  boot.extraModulePackages = with config.boot.kernelPackages; [
+    rtl88xxau-aircrack
+  ];
   # boot.kernelPatches = [ {
   #      name = "selinux-config";
   #      patch = null;
@@ -30,7 +30,7 @@
   #            '';
   # } ];
 
-  systemd.package = pkgs-default.systemd.override { withSelinux = true; };
+#  systemd.package = pkgs-default.systemd.override { withSelinux = true; };
 
   #environment.systemPackages = with pkgs; [
   #  policycoreutils

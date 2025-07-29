@@ -3,6 +3,7 @@
   environment.systemPackages = with pkgs-default; [ 
     wget
     git
+    git-lfs
     curl
     openssh
     neofetch
@@ -20,7 +21,6 @@
     xz
     linux-wifi-hotspot
     iw
-    remnote
     youtube-music
     yazi
     zed-editor
